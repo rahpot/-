@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+    {% for action in jobs %}
+    <li>{{action.job}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

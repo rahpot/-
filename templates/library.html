@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class>Библиотека</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <table>
+        <thead>
+            <tr>
+                <th>{{ form.sort_type(class="form-control", type="select") }}</th>
+                <th>{{ form.genre_type(class="form-control", type="select") }}</th>
+                <th>{{ form.name(class="form-control", type="string") }}</th>
+                <th>{{ form.author(class="form-control", type="string") }}</th>
+                <th>{{ form.submit(class="form-control", type="submit") }}</th>
+                {% if current_user.is_authenticated %}
+                <th>{{ form.only_my }} {{ form.only_my.label}}</th>
+                {% endif %}
+            </tr>
+        </thead>
+    </table>
+    {% for action in library%}
+        <table class="table1">
+            <caption class="caption1">Книга #{{loop.index}}</caption>
+            <thead class="th1">
+                <tr>
+                    <th class="th2">Книга</th>
+                    <th class="th2">Жанр</th>
+                    <th class="th2">Описание</th>
+                    <th class="th2">Автор</th>
+                    <th class="th2">Дата публикации</th>
+                    <th class="th2">Цена</th>
+                    {% if action.trader == current_user.id %}
+                    <th class="th2">Изменить</th>
+                    <th class="th2">Удалить</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody class="td1">
+                <tr>
+                    <td class="td2"><a href="{{pages[loop.index-1]}}">{{action.name}}</a></td>
+                    <td class="td2"><p>{{genres[loop.index - 1].genre}}</p></td>
+                    <td class="td2">{% for line in descriptions[loop.index - 1] %}
+                            <p>{{line}}</p>
+                        {% endfor %}
+                    </td>
+                    <td class="td2"><p>{{action.author}}</p></td>
+                    <td class="td2"><p>{{action.create_date}}</p></td>
+                    <td class="td2"><p>{{action.price}}</p></td>
+                    {% if action.trader == current_user.id %}
+                    <td class="th2"><a href="/library/{{action.id}}" class="btn btn-success">
+                                        Изменить
+                                    </a>
+                    </td>
+                    <td class="th2"><a href="/library_del/{{action.id}}" class="btn btn-danger">
+                                    Удалить
+                                    </a>
+                    </td>
+                    {% endif %}
+                </tr>
+            </tbody>
+        </table>
+</form>
+{% endfor %}
+{% endblock %}

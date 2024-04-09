@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Пополнение средств</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+    {{ form.money.label }}<br>
+    {{ form.money(class="form-control", type="label") }}<br>
+    {% for error in form.money.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+        {% endfor %}
+    </p>
+    <p>
+    {{ form.card.label }}<br>
+    {{ form.card(class="form-control", type="label") }}<br>
+    {% for error in form.card.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+    {{ form.password.label }}<br>
+    {{ form.password(class="form-control", type="label") }}<br>
+    {% for error in form.password.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>{{ form.ok(class="form-control", type="submit")}}</p>
+        {{message}}
+</form>
+{% endblock %}

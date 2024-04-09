@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добавление учителя</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+<p>
+    {{ form.name.label }}<br>
+    {{ form.name(class="form-control", type="label") }}<br>
+    {% for error in form.name.errors %}
+<p class="alert alert-danger" role="alert">
+    {{ error }}
+</p>
+{% endfor %}
+</p>
+<p>
+    {{ form.sch_object.label }}<br>
+    {{ form.sch_object(class="form-control", type="select") }}<br>
+    {% for error in form.sch_object.errors %}
+<p class="alert alert-danger" role="alert">
+    {{ error }}
+</p>
+{% endfor %}
+</p>
+<p>
+    {{ form.last_date.label }}<br>
+    {{ form.last_date(class="form-control", type="date") }}<br>
+    {% for error in form.last_date.errors %}
+<p class="alert alert-danger" role="alert">
+    {{ error }}
+</p>
+{% endfor %}
+</p>
+<p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+{{ message }}
+</form>
+{% endblock %}

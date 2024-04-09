@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+    <link rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                    crossorigin="anonymous">
+        <style>
+            table.text  {
+             width:  100%;
+             border-spacing: 0;
+            }
+            table.text td {
+             width: 20%; /
+             vertical-align: top;
+            }
+            td.rightcol {
+             text-align: right;
+            }
+            BODY {
+                background: url(/static/img/icon_on_top.jpg) no-repeat 400px 200px;
+                background-size: 1500px;
+            }
+        </style>
+</head>
+<body>
+    <table class="text">
+        <tr>
+            <td><h1>Регистратор заранее отработанных дней</h1></td>
+            {% if current_user.is_authenticated %}
+            <td><h2><a href="/teachers_view">Учителя</a></h2></td>
+            <td><h2><a href="/add_teach">Добавить учителя</a></h2></td>
+            <td class="rightcol">
+                <a class="navbar-brand" href="/logout">{{current_user.name}} {{ current_user.surname }}</a>
+                {% else %}
+                <p>
+                    <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
+                    <a class="btn btn-success" href="/login">Войти</a>
+                </p></td>
+        {% endif %}
+        </tr>
+    </table>
+    <h4 class="motto">МАОУ "Академический лицей"</h4>
+    {% block content %}{% endblock %}
+</body>
+</html>

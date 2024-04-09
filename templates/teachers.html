@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class>Учителя</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <table>
+        <thead>
+            <tr>
+                <th>{{ form.sort_type(class="form-control", type="select") }}</th>
+                <th>{{ form.sch_object(class="form-control", type="select") }}</th>
+                <th>{{ form.name(class="form-control", type="string") }}</th>
+                <th>{{ form.submit(class="form-control", type="submit") }}</th>
+            </tr>
+        </thead>
+    </table>
+    {% for action in teachers%}
+        <table class="table1">
+            <caption class="caption1">Педогог #{{loop.index}}</caption>
+            <thead class="th1">
+                <tr>
+                    <th class="th2">ФИО</th>
+                    <th class="th2">Школьный предмет</th>
+                    <th class="th2">отпускные</th>
+                    <th class="th2">последнее изменение</th>
+                    <th class="th2">Удалить</th>
+                </tr>
+            </thead>
+            <tbody class="td1">
+                <tr>
+                    <td class="td2"><p><a href="/teacher/{{action.id}}">{{action.name}}</a></p></td>
+                    <td class="td2"><p>{{action.object}}</p></td>
+                    <td class="td2"><p>{{action.count}}</p></td>
+                    <td class="td2"><p>{{action.last_date}}</p></td>
+                    <td class="th2"><a href="/teach_del/{{action.id}}" class="btn btn-danger">
+                                    Удалить
+                                    </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</form>
+{% endfor %}
+{% endblock %}

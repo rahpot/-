@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Публикация книги</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+<p>
+    {{ form.book.label }}<br>
+    {{ form.book(class="form-control", type="label") }}<br>
+    {% for error in form.book.errors %}
+<p class="alert alert-danger" role="alert">
+    {{ error }}
+</p>
+{% endfor %}
+</p>
+<p>
+    {{ form.genre_type.label }}<br>
+    {{ form.genre_type(class="form-control", type="select") }}<br>
+    {% for error in form.genre_type.errors %}
+<p class="alert alert-danger" role="alert">
+    {{ error }}
+</p>
+{% endfor %}
+</p>
+<p>
+    {{ form.description.label }}<br>
+    {{ form.description(class="form-control", type="text") }}<br>
+    {% for error in form.description.errors %}
+<p class="alert alert-danger" role="alert">
+    {{ error }}
+</p>
+{% endfor %}
+</p>
+<p>
+    {{ form.create_date.label }}<br>
+    {{ form.create_date(class="form-control", type="label") }}<br>
+    {% for error in form.create_date.errors %}
+<p class="alert alert-danger" role="alert">
+    {{ error }}
+</p>
+{% endfor %}
+</p>
+<p>
+    {{ form.link.label }}<br>
+    {{ form.link(class="form-control", type="label") }}<br>
+    {% for error in form.link.errors %}
+<p class="alert alert-danger" role="alert">
+    {{ error }}
+</p>
+{% endfor %}
+</p>
+<p>
+    {{ form.author.label }}<br>
+    {{ form.author(class="form-control", type="label") }}<br>
+    {% for error in form.author.error %}
+<p class="alert alert-danger" role="alert">
+    {{ error }}
+</p>
+{% endfor %}
+</p>
+<p>
+    {{ form.price.label }}<br>
+    {{ form.price(class="form-control", type="label") }}<br>
+    {% for error in form.price.errors %}
+<p class="alert alert-danger" role="alert">
+    {{ error }}
+</p>
+{% endfor %}
+</p>
+<p>{{ form.public(type="submit", class="btn btn-primary") }}</p>
+{{ message }}
+</form>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{teacher.name}}</h2>
+<h4>{{teacher.object}}</h4>
+<h2>{{teacher.count}}</h2>
+<h3>Новая дата:</h3>
+<form action="" method="post">
+        {{ form.hidden_tag() }}
+        <table>
+            <thead>
+                <tr>
+                    <th>{{ form.date_start(class="form-control", type="date") }}</th>
+                    <th>{{ form.date_end(class="form-control", type="date") }}</th>
+                    <th>{{ form.duration(class="form-control", type="label") }}</th>
+                    <th>{{ form.get.label}} {{ form.get }}</th>
+                    <th><p>{{ form.submit(type="submit", class="btn btn-primary") }} </p>
+                        <p>{{message}}</p></th>
+                </tr>
+            </thead>
+        </table>
+</form>
+    <table>
+        <thead>
+            <tr>
+                <th>Дата</th>
+                <th>Кол-во полученных отпускных</th>
+            </tr>
+        </thead>
+        {% for action in dates %}
+        <tbody>
+            {% if action.type == 1 %}
+                <tr>
+                    <td><p style="color:#00AA00">{{action.date_start.date()}} - {{action.date_end.date()}}</p></td>
+                    <td><p style="color:#00AA00">{{action.date_start.date() - action.date_end.date()}}</p></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td><p style="color:#AA0000">{{action.date_start.date()}} - {{action.date_end.date()}}</p></td>
+                    <td><p style="color:#AA0000">{{action.date_start.date() - action.date_end.date()}}</p></td>
+                </tr>
+            {% endif %}
+        </tbody>
+        {% endfor %}
+    </table>
+
+{% endblock %}
