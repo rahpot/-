@@ -1,0 +1,58 @@
+.motto{
+    margin-left: 20px;
+    color: #CCCCCC;
+}
+.portfolio{
+    margin-left: 60px;
+    color: #000000;
+}
+.together{
+    display: flex;
+}
+.text_wrap{
+    margin: 10px;
+    text-align: right;
+}
+.form{
+    font-size: 36px;
+    height: 36px;
+    width: 500px;
+}
+.distribution{
+    margin-left: 50px;
+    line-height: 1.5;
+}
+.together2{
+    display: block;
+}
+.text_wrap2{
+    align-self: flex-end;
+    margin-left: 400px;
+    background-color: #DDDDDD;
+}
+.table1{
+    max-width: 70%;
+    width: 70%;
+    border-collapse: collapse;
+    text-align: left;
+}
+.caption1{
+    caption-side: top;
+    text-align: left;
+    padding: 10px 0;
+    font-size: 14px;
+}
+.th1{
+   background-color: #CCCCCC;
+   padding: 10px 15px;
+}
+.td1{
+    background-color: #F3A2D6
+}
+table.text  {
+    width:  100%; /* Ширина таблицы */
+    border-spacing: 0; /* Расстояние между ячейками */
+   }
+table.text td {
+ width: 50%; /* Ширина ячеек */
+ vertical-al
